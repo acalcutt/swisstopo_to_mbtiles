@@ -7,7 +7,7 @@ mywget()
 	if [ ! -f $dest ]
 	then
 		echo $dest
-		$wget -P download/ "$1"
+		wget -P download/ "$1"
 	fi
 }
 
