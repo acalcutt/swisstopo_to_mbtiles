@@ -14,7 +14,7 @@ vrtfile2=${OUTPUT_DIR}/swissalti3d_terrainrgb_z0-Z17_warp.vrt
 ulimit -s 65536
 gdalbuildvrt -overwrite ${vrtfile} ${INPUT_DIR}/*.tif
 gdalwarp -r cubicspline -t_srs EPSG:3857 -dstnodata 0 -co COMPRESS=DEFLATE ${vrtfile} ${vrtfile2}
-rio rgbify -b -11000 -i 0.01 --min-z 0 --max-z 17 -j 24 --format png ${vrtfile2} ${mbtiles}
+rio rgbify -b -10000 -i 0.1 --min-z 0 --max-z 17 -j 24 --format png ${vrtfile2} ${mbtiles}
 
 #sqlite3 ${mbtiles} 'CREATE UNIQUE INDEX tile_index on tiles (zoom_level, tile_column, tile_row);'
 #sqlite3 ${mbtiles} 'UPDATE metadata SET value = "swissalti3d_terrainrgb_z0-Z17" WHERE name = "name" AND value = "";'
